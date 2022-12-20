@@ -1,0 +1,29 @@
+@use "../../../assets/global-styles/mixin.scss";
+.login-page {
+  width: 100%;
+  height: fit-content;
+  @include mixin.osh-border(1px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+  &__input {
+    @include mixin.osh-input();
+    width: 60%;
+    &:not(:last-of-type) {
+      margin-bottom: 16px;
+    }
+  }
+  &__action-holder {
+    width: 60%;
+    margin: 32px auto;
+    height: fit-content;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  a {
+    @include mixin.osh-button();
+  }
+}

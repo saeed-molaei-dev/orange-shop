@@ -1,0 +1,37 @@
+.login-button {
+  position: relative;
+  &:hover {
+    .login-button__nav-wrapper {
+      display: block;
+    }
+  }
+  &__nav-wrapper {
+    width: 200px;
+    height: fit-content;
+    padding-top: 16px;
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    z-index: 2;
+  }
+  &__items-holder {
+    background-color: #eee;
+    width: 100%;
+    height: fit-content;
+    padding: 32px 16px 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: baseline;
+    div , a {
+    width: 100%;
+    border-bottom: 1px solid black;
+    padding: 0 16px 8px ;
+    
+    margin-block-start: 8px;
+  }
+  div{ border: none; cursor: pointer; }
+  }
+ 
+}

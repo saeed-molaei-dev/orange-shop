@@ -1,0 +1,25 @@
+@use "../../../assets/global-styles/mixin.scss";
+.cart-checkout {
+  width: 100%;
+  height: calc(100vh - 88px);
+  position: relative;
+  padding: 8px 16px;
+  &__footer {
+    width: 100%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    padding-block: 8px;
+    border-top: 1px solid black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  p {
+    width: 100%;
+    text-align: center;
+  }
+  a {
+    @include mixin.osh-button();
+  }
+}

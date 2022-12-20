@@ -1,0 +1,14 @@
+@use "../../../assets/global-styles/mixin.scss";
+.header {
+  width: 100%;
+  height: 56px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  @include mixin.osh-border(1px);
+  padding: 0 16xp;
+  margin: 8px auto 16px;
+  &__nav {
+    display: flex;
+  }
+}

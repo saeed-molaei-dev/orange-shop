@@ -1,0 +1,56 @@
+@font-face {
+  font-family: "Peyda";
+  src: url("./font/eot/peyda-regular.eot");
+  src: url("./font/eot/peyda-regular.eot?#iefix") format("embedded-opentype"),
+    url("./font/woff2/peyda-regular.woff2") format("woff2"),
+    url("./font/woff/peyda-regular.woff") format("woff"),
+    url("./font/ttf/peyda-regular.ttf") format("truetype");
+  font-weight: 300;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Peyda";
+  src: url("./font/eot/peyda-medium.eot");
+  src: url("./font/eot/peyda-medium.eot?#iefix") format("embedded-opentype"),
+    url("./font/woff2/peyda-medium.woff2") format("woff2"),
+    url("./font/woff/peyda-medium.woff") format("woff"),
+    url("./font/ttf/peyda-medium.ttf") format("truetype");
+  font-weight: 500;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Peyda";
+  src: url("./font/eot/peyda-bold.eot");
+  src: url("./font/eot/peyda-bold.eot?#iefix") format("embedded-opentype"),
+    url("./font/woff2/peyda-bold.woff2") format("woff2"),
+    url("./font/woff/peyda-bold.woff") format("woff"),
+    url("./font/ttf/peyda-bold.ttf") format("truetype");
+  font-weight: 700;
+  font-display: swap;
+}
+
+* {
+  font-family: "Peyda";
+}
+
+body {
+  font-family: "Peyda", sans-serif;
+  background-color: #fff7e7;
+  /* background-color: #5a5a5a; */
+  margin: 0 auto;
+  padding: 0;
+  width: 100%;
+  max-width: 720px;
+  user-select: none;
+}
+
+.icon-style {
+  height: 18px;
+  text-align: center;
+}
+.icon-style :first-child {
+  font-size: large;
+  padding-top: 3px;
+}

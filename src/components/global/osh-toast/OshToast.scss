@@ -1,0 +1,26 @@
+.osh-toast {
+  width: 300px;
+  height: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  padding: 0 16px;
+  border-radius: 24px;
+  bottom: 24px;
+  right: calc(50% - 150px);
+  font-size: 18px;
+  line-height: 16px;
+  &__success {
+    background-color: turquoise;
+  }
+  &__warning {
+    background-color: khaki;
+  }
+  &__danger {
+    background-color: tomato;
+  }
+  svg {
+    cursor: pointer;
+  }
+}

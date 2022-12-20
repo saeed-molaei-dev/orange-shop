@@ -1,0 +1,23 @@
+@use "../../../assets/global-styles/mixin.scss";
+.sign-up-page {
+  width: 100%;
+  height: fit-content;
+  @include mixin.osh-border(1px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+  &__input {
+    @include mixin.osh-input();
+    width: 60%;
+    &:not(:last-of-type) {
+      margin-bottom: 16px;
+    }
+  }
+.osh-button {
+    
+    margin: 32px auto;
+    
+  }
+}
