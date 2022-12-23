@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { Navigate } from "react-router-dom";
+import { cLocalStorageUser } from "../../../constansts/constanst.Const";
 import ChangePassword from "../change-password/ChangePassword";
 import ChangeProfile from "../change-profile/ChangeProfile";
 import SideBar from "../side-bar/SideBar";
@@ -9,8 +11,23 @@ function SettingPage() {
   function changeTab(tabValue) {
     setSelectedTab(tabValue);
   }
+  const [hasToken, sethasToken] = useState(false);
+  function CheckToken() {
+    if (
+      localStorage.getItem(cLocalStorageUser) &&
+      JSON.parse(localStorage.getItem(cLocalStorageUser)).token
+    ) {
+      sethasToken(true);
+    }
+    sethasToken(false);
+  }
+  useEffect(() => {
+    CheckToken();
+  }, []);
+
   return (
     <div className="setting-page">
+      {!hasToken && <Navigate to={"/"} />}
       <SideBar
         click={(tabValue) => {
           changeTab(tabValue);

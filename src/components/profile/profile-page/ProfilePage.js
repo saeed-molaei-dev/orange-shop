@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { json, Navigate } from "react-router-dom";
+import { cLocalStorageUser } from "../../../constansts/constanst.Const";
 import { getProfile } from "../../../store/auth/Auth.Action";
 import "./ProfilePage.scss";
 function ProfilePage() {
@@ -7,11 +9,23 @@ function ProfilePage() {
   const { user } = useSelector(
     (response) => response.authState.userProfileInfo,
   );
+  const [hasToken, sethasToken] = useState(false);
+  function CheckToken() {
+    if (
+      localStorage.getItem(cLocalStorageUser) &&
+      JSON.parse(localStorage.getItem(cLocalStorageUser)).token
+    ) {
+      sethasToken(true);
+    }
+    sethasToken(false);
+  }
   useEffect(() => {
+    CheckToken();
     mergedDispatch(getProfile());
   }, []);
   return (
     <div className="profile-page">
+      {!hasToken && <Navigate to={"/"} />}
       {user && user.image && (
         <div className="profile-page__image-holder">
           <img src={user.image} alt={user.username} />

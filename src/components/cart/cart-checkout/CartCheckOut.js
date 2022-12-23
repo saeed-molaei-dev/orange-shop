@@ -1,7 +1,8 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, Navigate } from "react-router-dom";
+import { cLocalStorageUser } from "../../../constansts/constanst.Const";
 import OshButton from "../../global/button/osh-button/OshButton";
 import CartItem from "../cart-item/CartItem";
 import "./CartCheckOut.scss";
@@ -24,6 +25,20 @@ function CartCheckOut() {
     });
     return orderItems;
   }
+  const [hasToken, sethasToken] = useState(false);
+  function CheckToken() {
+    if (
+      localStorage.getItem(cLocalStorageUser) &&
+      JSON.parse(localStorage.getItem(cLocalStorageUser)).token
+    ) {
+      sethasToken(true);
+    }
+    sethasToken(false);
+  }
+  useEffect(() => {
+    CheckToken();
+  }, []);
+
   function SubmitOrder() {
     axios
       .post(
@@ -52,14 +67,15 @@ function CartCheckOut() {
   }
   return (
     <div className="cart-checkout">
+      {" "}
+      {!hasToken && <Navigate to={"/"} />}
       {cartList.map((itemData, index) => {
         return <CartItem data={itemData} key={index} />;
       })}
-
       <div className="cart-checkout__footer">
         <Link to="/cart">تغییر</Link>
         <span>مجموع قیمت: {cartTotals.totalPrice}</span>
-        <OshButton text={"ذخیره"}  disabled={false} click={SubmitOrder} />
+        <OshButton text={"ذخیره"} disabled={false} click={SubmitOrder} />
       </div>
       {submited && <Navigate to="/" />}
     </div>

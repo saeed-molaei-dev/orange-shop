@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, Navigate } from "react-router-dom";
+import { cLocalStorageUser } from "../../../constansts/constanst.Const";
 import { SignUp, StoreAddress } from "../../../store/auth/Auth.Action";
 import OshButton from "../../global/button/osh-button/OshButton";
 import "./CartAddress.scss";
@@ -25,10 +26,20 @@ function CartAddress() {
     mergedDispatch(StoreAddress({ city, address, postalCode, phone }));
     setSaved(true);
   }
+  const [hasToken, sethasToken] = useState(false);
+  function CheckToken() {
+    if (
+      localStorage.getItem(cLocalStorageUser) &&
+      JSON.parse(localStorage.getItem(cLocalStorageUser)).token
+    ) {
+      sethasToken(true);
+    }
+    sethasToken(false);
+  }
   useEffect(() => {
+    CheckToken();
     handleButton();
   }, []);
-
   function handleButton() {
     if (
       city.trim() === "" &&
@@ -43,6 +54,7 @@ function CartAddress() {
   }
   return (
     <div className="cart-address">
+      {!hasToken && <Navigate to={"/"} />}
       <input
         className="cart-address__input"
         type="text"
@@ -90,7 +102,7 @@ function CartAddress() {
             : "cart-address__disable-button"
         }
       >
-        <OshButton disabled={false}  text={"بعدی"} click={handleAddressForm} />
+        <OshButton disabled={false} text={"بعدی"} click={handleAddressForm} />
       </span>
       {saved && <Navigate to="/checkout"></Navigate>}
     </div>
