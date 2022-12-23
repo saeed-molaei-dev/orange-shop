@@ -4,16 +4,18 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getProfile } from "../../../store/auth/Auth.Action";
 import OshButton from "../../global/button/osh-button/OshButton";
+import OshInput from "../../global/osh-input/OshInput";
 import "./ChangeProfile.scss";
 function ChangeProfile() {
   const mergedDispatch = useDispatch();
   const { userList } = useSelector((response) => response.authState);
   const [firstname, setFirstName] = useState("");
   const [lastname, setLastName] = useState("");
-  const [gender, setGender] = useState("");
+  const [gender, setGender] = useState("male");
   const [age, setAge] = useState("");
   const [city, setCity] = useState("");
   async function SubmitForm() {
+
     await axios.put(
       "http://kzico.runflare.run/user/change-profile",
       {
@@ -28,55 +30,85 @@ function ChangeProfile() {
           authorization: "Bearer " + userList.token,
         },
       },
-    );
+    ).then((x)=>{
+      console.log(x)
+    }) ;
   }
   return (
     <div className="change-profile">
-      <input
-        className="change-profile__input"
-        type="text"
+      <OshInput
+        errorMessage="نام وارد شده صحیح نیست!!"
+        minLength="3"
+        maxLength="50"
+        pattern="*"
         placeholder="نام"
-        value={firstname}
-        onChange={(event) => {
-          setFirstName(event.target.value);
+        defaultValue={firstname}
+        change={(value) => {
+          setFirstName(value);
         }}
       />
-      <input
-        className="change-profile__input"
-        type="text"
+      <OshInput
+        errorMessage="نام خانوادگی وارد شده صحیح نیست!!"
+        minLength="3"
+        maxLength="50"
+        pattern="*"
         placeholder="نام خانوادگی"
-        value={lastname}
-        onChange={(event) => {
-          setLastName(event.target.value);
+        defaultValue={lastname}
+        change={(value) => {
+          setLastName(value);
         }}
       />
-      <input
-        className="change-profile__input"
-        type="text"
-        placeholder="جنسیت"
-        value={gender}
-        onChange={(event) => {
-          setGender(event.target.value);
-        }}
-      />
-      <input
-        className="change-profile__input"
-        type="text"
+ 
+
+      <OshInput
+        errorMessage="لطفا سن را به درستی وارد کنید !!"
+        minLength="2"
+        maxLength="2"
+        pattern="*"
         placeholder="سن"
-        value={age}
-        onChange={(event) => {
-          setAge(event.target.value);
+        defaultValue={age}
+        change={(value) => {
+          setAge(value);
         }}
       />
-      <input
-        className="change-profile__input"
-        type="text"
+      <OshInput
+        errorMessage="نام شهر وارد شده صحیح نیست!!"
+        minLength="2"
+        maxLength="50"
+        pattern="*"
         placeholder="شهر"
-        value={city}
-        onChange={(event) => {
-          setCity(event.target.value);
+        defaultValue={city}
+        change={(value) => {
+          setCity(value);
         }}
       />
+      <div className="change-profile__radio">
+        <span className="change-profile__button-holder">
+          <label className="change-profile__button">
+            <input
+              type="radio"
+              name="gender"
+              value="male"
+              onChange={(event) => {
+                setGender("male");
+              }}
+            />
+            مرد
+          </label>
+          <label className="change-profile__button">
+            <input
+              type="radio"
+              name="gender"
+              value="female"
+              onChange={(event) => {
+                setGender("female");
+              }}
+            />
+            زن
+          </label>
+        </span>
+      </div>
+
       <OshButton
         className="change-profile__button"
         text={"ذخیره"}
@@ -90,3 +122,15 @@ function ChangeProfile() {
 }
 
 export default ChangeProfile;
+
+{
+  /* <input
+className="change-profile__input"
+type="text"
+placeholder="نام"
+value={firstname}
+onChange={(event) => {
+  setFirstName(event.target.value);
+}}
+/> */
+}

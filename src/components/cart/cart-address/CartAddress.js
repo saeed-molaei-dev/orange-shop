@@ -94,7 +94,7 @@ function CartAddress() {
         errorMessage="شماره تماس وارد شده صحیح نیست!!"
         minLength="11"
         maxLength="11"
-        pattern="*"
+        pattern="09(1[0-9]|3[1-9]|2[1-9])-?[0-9]{3}-?[0-9]{4}"
         placeholder="شماره تماس"
         defaultValue={phone}
         change={(value) => {

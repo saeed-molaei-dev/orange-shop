@@ -9,7 +9,7 @@ function ProfilePage() {
   const { user } = useSelector(
     (response) => response.authState.userProfileInfo,
   );
-  const [hasToken, sethasToken] = useState(true); 
+  const [hasToken, sethasToken] = useState(true);
   function CheckToken() {
     if (JSON.parse(localStorage.getItem(cLocalStorageUser)) !== null) {
       sethasToken(true);
@@ -24,7 +24,7 @@ function ProfilePage() {
   }, []);
   return (
     <div className="profile-page">
-      {!hasToken && <Navigate to={"/"} />} 
+      {!hasToken && <Navigate to={"/"} />}
       {user && user.image && (
         <div className="profile-page__image-holder">
           <img src={user.image} alt={user.username} />
@@ -35,7 +35,14 @@ function ProfilePage() {
       {user && user.mobile && <p>شماره تماس : {user.mobile}</p>}
       {user && user.firstname && <p>نام : {user.firstname}</p>}
       {user && user.lastname && <p>نام خانوادگی : {user.lastname}</p>}
-      {user && user.gender && <p>جنسیت : {user.gender}</p>}
+      {user && user.gender && (
+        <p>
+          جنسیت :
+          {user.gender === "male"
+           ? "آقا" : 
+           user.gender === "female" && "خانوم"}
+        </p>
+      )}
       {user && user.age && <p>سن : {user.age}</p>}
       {user && user.city && <p>شهر : {user.city}</p>}
     </div>
