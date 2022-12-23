@@ -9,24 +9,23 @@ function ProfilePage() {
   const { user } = useSelector(
     (response) => response.authState.userProfileInfo,
   );
-  const [hasToken, sethasToken] = useState(true);
+  const [hasToken, sethasToken] = useState(true); 
   function CheckToken() {
-    if (
-      localStorage.getItem(cLocalStorageUser) &&
-      JSON.parse(localStorage.getItem(cLocalStorageUser)).token
-    ) {
-      return sethasToken(true);
+    if (JSON.parse(localStorage.getItem(cLocalStorageUser)) !== null) {
+      sethasToken(true);
+      return true;
     } else {
-      return sethasToken(true);
+      sethasToken(false);
+      return false;
     }
   }
   useEffect(() => {
-    // CheckToken();
-    mergedDispatch(getProfile());
+    CheckToken() && mergedDispatch(getProfile());
   }, []);
   return (
     <div className="profile-page">
       {!hasToken && <Navigate to={"/"} />}
+
       {user && user.image && (
         <div className="profile-page__image-holder">
           <img src={user.image} alt={user.username} />

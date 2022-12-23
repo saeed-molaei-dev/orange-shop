@@ -27,17 +27,16 @@ function CartCheckOut() {
   }
   const [hasToken, sethasToken] = useState(true);
   function CheckToken() {
-    if (
-      localStorage.getItem(cLocalStorageUser) &&
-      JSON.parse(localStorage.getItem(cLocalStorageUser)).token
-      ) {
-        return sethasToken(true);
-      } else {
-        return sethasToken(true);
-      }
+    if (JSON.parse(localStorage.getItem(cLocalStorageUser)) !== null) {
+      sethasToken(true);
+      return true;
+    } else {
+      sethasToken(false);
+      return false;
+    }
   }
   useEffect(() => {
-    // CheckToken();
+    CheckToken();
   }, []);
 
   function SubmitOrder() {
@@ -67,8 +66,7 @@ function CartCheckOut() {
       });
   }
   return (
-    <div className="cart-checkout">
-      {" "}
+    <div className="cart-checkout"> 
       {!hasToken && <Navigate to={"/"} />}
       {cartList.map((itemData, index) => {
         return <CartItem data={itemData} key={index} />;

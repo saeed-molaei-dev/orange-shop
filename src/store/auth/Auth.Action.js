@@ -52,52 +52,6 @@ export function SignUp(props) {
       .finally(() => {});
   };
 }
-export function getProfile() {
-  return async (dispatch, getState) => {
-    const { userList } = getState().authState;
-    dispatch({
-      type: cUserUpdateState,
-      payload: {
-        userLoading: true,
-        userList: userList,
-        userError: "",
-        userSignedUp: false,
-        userProfileInfo: {},
-      },
-    });
-    await axios
-      .get("http://kzico.runflare.run/user/profile", {
-        headers: {
-          authorization: "Bearer " + userList.token,
-        },
-      })
-      .then((response) => {
-        dispatch({
-          type: cUserUpdateState,
-          payload: {
-            userLoading: false,
-            userList: userList,
-            userError: "",
-            userSignedUp: true,
-            userProfileInfo: response.data,
-          },
-        });
-      })
-      .catch((error) => {
-        dispatch({
-          type: cUserUpdateState,
-          payload: {
-            userLoading: false,
-            userList: userList,
-            userError: error.message,
-            userSignedUp: false,
-            userProfileInfo: {},
-          },
-        });
-      })
-      .finally(() => {});
-  };
-}
 export function Login(props) {
   return async (dispatch, getState) => {
     const { userList } = getState().authState;
@@ -144,7 +98,52 @@ export function Login(props) {
       .finally(() => {});
   };
 }
-
+export function getProfile() {
+  return async (dispatch, getState) => {
+    const { userList } = getState().authState;
+    dispatch({
+      type: cUserUpdateState,
+      payload: {
+        userLoading: true,
+        userList: userList,
+        userError: "",
+        userSignedUp: false,
+        userProfileInfo: {},
+      },
+    });
+    await axios
+      .get("http://kzico.runflare.run/user/profile", {
+        headers: {
+          authorization: "Bearer " + userList.token,
+        },
+      })
+      .then((response) => {
+        dispatch({
+          type: cUserUpdateState,
+          payload: {
+            userLoading: false,
+            userList: userList,
+            userError: "",
+            userSignedUp: true,
+            userProfileInfo: response.data,
+          },
+        });
+      })
+      .catch((error) => {
+        dispatch({
+          type: cUserUpdateState,
+          payload: {
+            userLoading: false,
+            userList: userList,
+            userError: error.message,
+            userSignedUp: false,
+            userProfileInfo: {},
+          },
+        });
+      })
+      .finally(() => {});
+  };
+}
 export function StoreAddress(props) {
   return async (dispatch, getState) => {
     const { userList } = getState().authState;
@@ -162,7 +161,6 @@ export function StoreAddress(props) {
     });
   };
 }
-
 export function Logout() {
   return async (dispatch, getState) => {
     DeleteUserLocalStorage();

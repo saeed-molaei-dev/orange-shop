@@ -11,22 +11,20 @@ function OrderDetail() {
   const { orderDetail } = useSelector((response) => response.orderState);
   const [hasToken, sethasToken] = useState(true);
   function CheckToken() {
-    if (
-      localStorage.getItem(cLocalStorageUser) &&
-      JSON.parse(localStorage.getItem(cLocalStorageUser)).token
-    ) {
-      return sethasToken(true);
+    if (JSON.parse(localStorage.getItem(cLocalStorageUser)) !== null) {
+      sethasToken(true);
+      return true;
     } else {
-      return sethasToken(true);
+      sethasToken(false);
+      return false;
     }
   }
   useEffect(() => {
-    // CheckToken();
+    CheckToken() &&
     orderDispatch(GetOrderDetail(id));
   }, []);
   return (
     <div className="order-detail">
-      {" "}
       {!hasToken && <Navigate to={"/"} />}
       {orderDetail && <OrderItem data={orderDetail} />}
     </div>

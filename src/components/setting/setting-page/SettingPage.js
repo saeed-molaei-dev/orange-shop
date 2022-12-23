@@ -13,17 +13,16 @@ function SettingPage() {
   }
   const [hasToken, sethasToken] = useState(true);
   function CheckToken() {
-    if (
-      localStorage.getItem(cLocalStorageUser) &&
-      JSON.parse(localStorage.getItem(cLocalStorageUser)).token
-    ) {
-      return sethasToken(true);
+    if (JSON.parse(localStorage.getItem(cLocalStorageUser)) !== null) {
+      sethasToken(true);
+      return true;
     } else {
-      return sethasToken(true);
+      sethasToken(false);
+      return false;
     }
   }
-  useEffect(() => { 
-    // CheckToken()
+  useEffect(() => {
+    CheckToken()  
   }, []);
 
   return (
