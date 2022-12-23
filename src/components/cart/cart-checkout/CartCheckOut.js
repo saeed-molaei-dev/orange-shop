@@ -66,7 +66,7 @@ function CartCheckOut() {
       });
   }
   return (
-    <div className="cart-checkout"> 
+    <div className="cart-checkout">
       {!hasToken && <Navigate to={"/"} />}
       {cartList.map((itemData, index) => {
         return <CartItem data={itemData} key={index} />;

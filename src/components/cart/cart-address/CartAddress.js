@@ -37,8 +37,7 @@ function CartAddress() {
     }
   }
   useEffect(() => {
-    CheckToken() &&
-    handleButton();
+    CheckToken() && handleButton();
   }, []);
 
   function handleButton() {
