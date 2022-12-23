@@ -26,20 +26,22 @@ function CartAddress() {
     mergedDispatch(StoreAddress({ city, address, postalCode, phone }));
     setSaved(true);
   }
-  const [hasToken, sethasToken] = useState(false);
+  const [hasToken, sethasToken] = useState(true);
   function CheckToken() {
     if (
       localStorage.getItem(cLocalStorageUser) &&
       JSON.parse(localStorage.getItem(cLocalStorageUser)).token
     ) {
-      sethasToken(true);
+      return sethasToken(true);
+    } else {
+      return sethasToken(true);
     }
-    sethasToken(false);
   }
   useEffect(() => {
-    CheckToken();
+    // CheckToken();
     handleButton();
   }, []);
+
   function handleButton() {
     if (
       city.trim() === "" &&
@@ -110,3 +112,5 @@ function CartAddress() {
 }
 
 export default CartAddress;
+
+

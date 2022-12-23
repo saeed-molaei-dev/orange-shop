@@ -9,18 +9,19 @@ function ProfilePage() {
   const { user } = useSelector(
     (response) => response.authState.userProfileInfo,
   );
-  const [hasToken, sethasToken] = useState(false);
+  const [hasToken, sethasToken] = useState(true);
   function CheckToken() {
     if (
       localStorage.getItem(cLocalStorageUser) &&
       JSON.parse(localStorage.getItem(cLocalStorageUser)).token
     ) {
-      sethasToken(true);
+      return sethasToken(true);
+    } else {
+      return sethasToken(true);
     }
-    sethasToken(false);
   }
   useEffect(() => {
-    CheckToken();
+    // CheckToken();
     mergedDispatch(getProfile());
   }, []);
   return (

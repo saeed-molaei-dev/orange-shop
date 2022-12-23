@@ -8,18 +8,18 @@ import "./OrdersPage.scss";
 function OrdersPage() {
   const orderDispatch = useDispatch();
   const { orderList } = useSelector((response) => response.orderState);
-  const [hasToken, sethasToken] = useState(false);
+  const [hasToken, sethasToken] = useState(true);
   function CheckToken() {
     if (
       localStorage.getItem(cLocalStorageUser) &&
       JSON.parse(localStorage.getItem(cLocalStorageUser)).token
-    ) {
-      sethasToken(true);
-    }
-    sethasToken(false);
-  }
+      ) {
+        return sethasToken(true);
+      } else {
+        return sethasToken(true);
+      }}
   useEffect(() => {
-    CheckToken();
+    // CheckToken();
     orderDispatch(GetOrders());
   }, []);
   return (
