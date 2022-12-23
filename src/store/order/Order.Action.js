@@ -64,8 +64,6 @@ export function GetOrderDetail(id) {
         },
       })
       .then((response) => {
-
-        console.log(response)
         dispatch({
           type: cOrderStoreData,
           payload: {

@@ -11,7 +11,6 @@ function OrderDetail() {
   useEffect(() => {
     orderDispatch(GetOrderDetail(id));
   }, []);
-  console.log(orderDetail);
   return (
     <div className="order-detail">
       {orderDetail && <OrderItem data={orderDetail} />}

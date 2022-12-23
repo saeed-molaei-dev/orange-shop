@@ -7,11 +7,12 @@ import {
 
 export function SignUp(props) {
   return async (dispatch, getState) => {
+    const { userList } = getState().authState;
     dispatch({
       type: cUserUpdateState,
       payload: {
         userLoading: true,
-        userList: null,
+        userList: userList,
         userError: "",
         userSignedUp: false,
         userProfileInfo: {},
@@ -29,7 +30,7 @@ export function SignUp(props) {
           type: cUserUpdateState,
           payload: {
             userLoading: false,
-            userList: null,
+            userList: userList,
             userError: "",
             userSignedUp: true,
             userProfileInfo: {},
@@ -41,7 +42,7 @@ export function SignUp(props) {
           type: cUserUpdateState,
           payload: {
             userLoading: false,
-            userList: null,
+            userList: userList,
             userError: error.message,
             userSignedUp: false,
             userProfileInfo: {},
@@ -53,11 +54,12 @@ export function SignUp(props) {
 }
 export function getProfile() {
   return async (dispatch, getState) => {
+    const { userList } = getState().authState;
     dispatch({
       type: cUserUpdateState,
       payload: {
         userLoading: true,
-        userList: getState().authState.userList,
+        userList: userList,
         userError: "",
         userSignedUp: false,
         userProfileInfo: {},
@@ -66,7 +68,7 @@ export function getProfile() {
     await axios
       .get("http://kzico.runflare.run/user/profile", {
         headers: {
-          authorization: "Bearer " + getState().authState.userList.token,
+          authorization: "Bearer " + userList.token,
         },
       })
       .then((response) => {
@@ -74,7 +76,7 @@ export function getProfile() {
           type: cUserUpdateState,
           payload: {
             userLoading: false,
-            userList: getState().authState.userList,
+            userList: userList,
             userError: "",
             userSignedUp: true,
             userProfileInfo: response.data,
@@ -86,7 +88,7 @@ export function getProfile() {
           type: cUserUpdateState,
           payload: {
             userLoading: false,
-            userList: null,
+            userList: userList,
             userError: error.message,
             userSignedUp: false,
             userProfileInfo: {},
@@ -98,11 +100,12 @@ export function getProfile() {
 }
 export function Login(props) {
   return async (dispatch, getState) => {
+    const { userList } = getState().authState;
     dispatch({
       type: cUserUpdateState,
       payload: {
         userLoading: true,
-        userList: null,
+        userList: userList,
         userError: "",
         userSignedUp: false,
         userProfileInfo: {},
@@ -131,7 +134,7 @@ export function Login(props) {
           type: cUserUpdateState,
           payload: {
             userLoading: false,
-            userList: null,
+            userList: userList,
             userError: error.message,
             userSignedUp: false,
             userProfileInfo: {},
@@ -144,12 +147,13 @@ export function Login(props) {
 
 export function StoreAddress(props) {
   return async (dispatch, getState) => {
+    const { userList } = getState().authState;
     SaveAddressToLocalStorage(props);
     dispatch({
       type: cUserUpdateState,
       payload: {
         userLoading: true,
-        userList: null,
+        userList: userList,
         userError: "",
         userSignedUp: false,
         userAddress: props,

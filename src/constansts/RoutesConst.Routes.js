@@ -16,7 +16,8 @@ import { orderStore } from "../store/order/Order.Store";
 import OrderDetail from "../components/order/order-detail/OrderDetail";
 import SettingPage from "../components/setting/setting-page/SettingPage";
 
-function RoutesConst() {
+function 
+RoutesConst() {
   return (
     <Routes>
       <Route

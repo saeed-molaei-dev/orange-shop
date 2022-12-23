@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -78,7 +79,8 @@ function ChangeProfile() {
       />
       <OshButton
         className="change-profile__button"
-        text={"ذخیره"} disabled={false} 
+        text={"ذخیره"}
+        disabled={false}
         click={() => {
           SubmitForm();
         }}
