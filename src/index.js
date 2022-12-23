@@ -10,17 +10,22 @@ import Header from "./components/global/header/Header";
 import RoutesConst from "./constansts/RoutesConst.Routes";
 import { AdListStore } from "./store/ad/ad-list/AdList.Store";
 import { mergedStore } from "./store/merged/Merged.Store";
+import IntHelper from "./components/global/int-helper/IntHelper";
 
 const root = ReactDOM.createRoot(document.getElementById("OrangeShop"));
 root.render(
-  <BrowserRouter>
-    <React.StrictMode>
+  <React.StrictMode>
+    <Provider store={mergedStore}>
+      <IntHelper />
+    </Provider>
+    <BrowserRouter>
       <div className="orange-shop-wrapper">
         <Provider store={mergedStore}>
           <Header />
         </Provider>
         <RoutesConst />
       </div>
-    </React.StrictMode>
-  </BrowserRouter>,
+    </BrowserRouter>
+    ,
+  </React.StrictMode>,
 );

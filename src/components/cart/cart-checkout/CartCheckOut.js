@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, Navigate } from "react-router-dom";
 import { cLocalStorageUser } from "../../../constansts/constanst.Const";
+import { ClearCart } from "../../../store/cart/cart.Action";
 import OshButton from "../../global/button/osh-button/OshButton";
 import CartItem from "../cart-item/CartItem";
 import "./CartCheckOut.scss";
@@ -63,6 +64,7 @@ function CartCheckOut() {
       )
       .then((response) => {
         setSubmited(true);
+        mergedDispatch(ClearCart());
       });
   }
   return (

@@ -32,6 +32,7 @@ export default function AddToCart(productData) {
     });
   };
 }
+
 export function IncreaseQty(id) {
   return async (dispatch, getState) => {
     const { cartState } = getState();
@@ -102,6 +103,22 @@ export function isDuplicate(cartList, productId) {
   });
   return productDuplicate;
 }
+
+export function ClearCart() {
+  return async (dispatch, getState) => {
+    AddToLocalStorage("");
+    dispatch({
+      type: cCartDelete,
+      payload: {
+        cartLoading: false,
+        cartList: [],
+        cartError: "",
+        cartTotals: { totalCount: 0, totalPrice: 0 },
+      },
+    });
+  };
+}
+
 function AddToLocalStorage(cartList) {
   localStorage.setItem(cLocalStorageCartList, JSON.stringify(cartList));
 }
