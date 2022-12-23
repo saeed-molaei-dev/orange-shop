@@ -1,9 +1,9 @@
 @mixin osh-button() {
+  background-color: lightgray;
   height: 32px;
+  padding: 0 24px;
   @include osh-border(1px);
   border-radius: 24px;
-  padding: 0 24px;
-  background-color: lightgray;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -11,17 +11,17 @@
     background-color: thistle;
   }
   &--disabled {
-    opacity: 0.5; 
+    opacity: 0.5;
     cursor: not-allowed;
   }
 }
 @mixin osh-input() {
-  @include osh-border(1px);
   background-color: #fff;
+  color: #333;
   padding: 8px 16px;
+  @include osh-border(1px);
   font-size: 16px;
   font-weight: 500;
-  color: #333;
 }
 @mixin osh-border($border-width) {
   border: $border-width solid #333;

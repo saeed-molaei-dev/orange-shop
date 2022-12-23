@@ -1,9 +1,11 @@
+/* eslint-disable no-lone-blocks */
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, Navigate } from "react-router-dom";
 import { cLocalStorageUser } from "../../../constansts/constanst.Const";
 import { SignUp, StoreAddress } from "../../../store/auth/Auth.Action";
 import OshButton from "../../global/button/osh-button/OshButton";
+import OshInput from "../../global/osh-input/OshInput";
 import "./CartAddress.scss";
 function CartAddress() {
   const { userAddress } = useSelector((response) => response.authState);
@@ -55,44 +57,48 @@ function CartAddress() {
   return (
     <div className="cart-address">
       {!hasToken && <Navigate to={"/"} />}
-      <input
-        className="cart-address__input"
-        type="text"
+      <OshInput
+        errorMessage="نام شهر وارد شده صحیح نیست!!"
+        minLength="2"
+        maxLength="50"
+        pattern="*"
         placeholder="شهر"
-        value={city}
-        onChange={(event) => {
-          setCity(event.target.value);
-          handleButton();
+        defaultValue={city}
+        change={(value) => {
+          setCity(value);
         }}
       />
-      <input
-        className="cart-address__input"
-        type="text"
+      <OshInput
+        errorMessage="آدرس وارد شده کوتاه است!!"
+        minLength="10"
+        maxLength="200"
+        pattern="*"
         placeholder="آدرس"
-        value={address}
-        onChange={(event) => {
-          setAddress(event.target.value);
-          handleButton();
+        defaultValue={address}
+        change={(value) => {
+          setAddress(value);
         }}
       />
-      <input
-        className="cart-address__input"
-        type="text"
+      <OshInput
+        errorMessage="کدپستی وارد شده صحیح نیست!!"
+        minLength="10"
+        maxLength="10"
+        pattern="*"
         placeholder="کدپستی"
-        value={postalCode}
-        onChange={(event) => {
-          setPostalCode(event.target.value);
-          handleButton();
+        defaultValue={postalCode}
+        change={(value) => {
+          setPostalCode(value);
         }}
       />
-      <input
-        className="cart-address__input"
-        type="text"
+      <OshInput
+        errorMessage="شماره تماس وارد شده صحیح نیست!!"
+        minLength="11"
+        maxLength="11"
+        pattern="*"
         placeholder="شماره تماس"
-        value={phone}
-        onChange={(event) => {
-          setPhone(event.target.value);
-          handleButton();
+        defaultValue={phone}
+        change={(value) => {
+          setPhone(value);
         }}
       />
       <span
@@ -110,3 +116,16 @@ function CartAddress() {
 }
 
 export default CartAddress;
+
+{
+  /* <input
+className="cart-address__input"
+type="text"
+placeholder="کدپستی"
+value={postalCode}
+onChange={(event) => {
+  setPostalCode(event.target.value);
+  handleButton();
+}}
+/> */
+}

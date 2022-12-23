@@ -24,8 +24,7 @@ function ProfilePage() {
   }, []);
   return (
     <div className="profile-page">
-      {!hasToken && <Navigate to={"/"} />}
-
+      {!hasToken && <Navigate to={"/"} />} 
       {user && user.image && (
         <div className="profile-page__image-holder">
           <img src={user.image} alt={user.username} />

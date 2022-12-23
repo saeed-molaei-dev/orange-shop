@@ -26,6 +26,5 @@ root.render(
         <RoutesConst />
       </div>
     </BrowserRouter>
-    ,
-  </React.StrictMode>,
+  </React.StrictMode>
 );

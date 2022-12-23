@@ -11,16 +11,16 @@ p {
   text-decoration: none;
 }
 input {
-  outline: none;
   margin: 0;
   padding: 0;
-  border: none; 
+  outline: none;
+  border: none;
 }
 button {
+  margin: 0;
+  padding: 0;
   background-color: transparent;
   border: none;
   outline: none;
-  margin: 0;
-  padding: 0;
   cursor: pointer;
 }
