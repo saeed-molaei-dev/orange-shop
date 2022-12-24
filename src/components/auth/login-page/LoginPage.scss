@@ -8,11 +8,12 @@
   justify-content: center;
   align-items: center;
   padding: 16px;
-  &__input {
+  .osh-input__input {
+    margin-inline:20%;
     @include mixin.osh-input();
     width: 60%;
-    &:not(:last-of-type) {
-      margin-bottom: 16px;
+    margin-bottom: 20px;
+    &:not(:last-of-type) { 
     }
   }
   &__action-holder {

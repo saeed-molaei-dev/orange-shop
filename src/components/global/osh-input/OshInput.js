@@ -9,13 +9,22 @@ function OshInput({
   maxLength,
   placeholder,
   defaultValue,
+  type = "text",
 }) {
   const [hasError, setHasError] = useState(false);
   function handleChange(inputEvent) {
-    if (inputEvent.target.validity.valid) {
-      setHasError(false);
+    if (pattern !== '*') {
+      if (pattern.test(inputEvent.target.value)) {
+        setHasError(false);
+      } else {
+        setHasError(true);
+      }
     } else {
-      setHasError(true);
+      if (inputEvent.target.validity.valid) {
+        setHasError(false);
+      } else {
+        setHasError(true);
+      }
     }
   }
   if (!defaultValue) {
@@ -25,7 +34,7 @@ function OshInput({
     <div className="osh-input">
       <input
         className="osh-input__input"
-        type="text"
+        type={type}
         placeholder={placeholder}
         minLength={minLength}
         maxLength={maxLength}

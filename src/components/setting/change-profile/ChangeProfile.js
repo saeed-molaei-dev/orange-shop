@@ -30,8 +30,7 @@ function ChangeProfile() {
           authorization: "Bearer " + userList.token,
         },
       },
-    ).then((x)=>{
-      console.log(x)
+    ).then((response)=>{ 
     }) ;
   }
   return (
@@ -58,8 +57,6 @@ function ChangeProfile() {
           setLastName(value);
         }}
       />
- 
-
       <OshInput
         errorMessage="لطفا سن را به درستی وارد کنید !!"
         minLength="2"

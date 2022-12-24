@@ -13,13 +13,13 @@ function OshToast({ text, type }) {
     let dynamicClass = "";
     switch (type) {
       case cSuccess:
-        dynamicClass = " osh-toast__success";
+        dynamicClass = "osh-toast__success";
         break;
       case cWarning:
-        dynamicClass = " osh-toast__warning";
+        dynamicClass = "osh-toast__warning";
         break;
       case cDanger:
-        dynamicClass = " osh-toast__danger";
+        dynamicClass = "osh-toast__danger";
         break;
     }
     return dynamicClass;

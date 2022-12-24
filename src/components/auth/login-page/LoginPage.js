@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, Navigate } from "react-router-dom";
 import { Login } from "../../../store/auth/Auth.Action";
 import OshButton from "../../global/button/osh-button/OshButton";
+import OshInput from "../../global/osh-input/OshInput";
 import "./LoginPage.scss";
 function LoginPage() {
   const [email, setEmail] = useState("");
@@ -16,26 +17,33 @@ function LoginPage() {
   }
   return (
     <div className="login-page">
-      <input
-        className="login-page__input"
-        type="text"
+      <OshInput
+        errorMessage="لطفا ایمیل را به درستی وارد کنید !!"
+        minLength="12"
+        maxLength="60"
+        pattern={/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g}
         placeholder="نام کاربری / ایمیل"
-        value={email}
-        onChange={(event) => {
-          setEmail(event.target.value);
+        defaultValue={email}
+        change={(value) => {
+          setEmail(value);
         }}
       />
-      <input
-        className="login-page__input"
+      <OshInput
+        errorMessage="رمز باید حداقل 10 کاراکتر و شامل حروف، عدد و سیمبل باشد !!"
+        minLength="10"
+        maxLength="50"
+        pattern={
+          /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/
+        }
+        placeholder="رمز عبور"
+        defaultValue={password}
         type="password"
-        placeholder="پسورد"
-        value={password}
-        onChange={(event) => {
-          setPassword(event.target.value);
+        change={(value) => {
+          setPassword(value);
         }}
-      />
+      /> 
       <div className="login-page__action-holder">
-        <OshButton text={"Log In"} click={handleLogin} disabled={false}  />
+        <OshButton text={"Log In"} click={handleLogin} disabled={false} />
         <Link to="/sign-up">Sign Up</Link>
       </div>
       {userList && <Navigate to="/" />}

@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
 import Login, { SignUp } from "../../../store/auth/Auth.Action";
 import OshButton from "../../global/button/osh-button/OshButton";
+import OshInput from "../../global/osh-input/OshInput";
+import OshToast from "../../global/osh-toast/OshToast";
 import "./SignUpPage.scss";
 function SignUpPage() {
   const [username, setUsername] = useState("");
@@ -10,63 +12,106 @@ function SignUpPage() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [mobile, setMobile] = useState("");
+  const [showToast, setShowToast] = useState(false);
   const mergedDispatch = useDispatch();
   const { userSignedUp } = useSelector((response) => {
     return response.authState;
   });
-  function handleSignUp() {
+  function HandleSignUp() {
     mergedDispatch(
       SignUp({ username, email, password, confirmPassword, mobile }),
     );
   }
+  function HandleToast() {
+    setShowToast(true);
+    setTimeout(() => {
+      setShowToast(false);
+    }, 3000);
+  }
+
   return (
     <div className="sign-up-page">
-      <input
-        className="sign-up-page__input"
-        type="text"
+      <OshInput
+        errorMessage="نام کاربری انتخاب شده کوتاه است !!"
+        minLength="5"
+        maxLength="50"
+        pattern="*"
         placeholder="نام کاربری"
-        value={username}
-        onChange={(event) => {
-          setUsername(event.target.value);
+        defaultValue={username}
+        change={(value) => {
+          setUsername(value);
         }}
       />
-      <input
-        className="sign-up-page__input"
-        type="text"
+      <OshInput
+        errorMessage="لطفا ایمیل را به درستی وارد کنید !!"
+        minLength="12"
+        maxLength="60"
+        pattern={/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g}
         placeholder="ایمیل"
-        value={email}
-        onChange={(event) => {
-          setEmail(event.target.value);
+        defaultValue={email}
+        change={(value) => {
+          setEmail(value);
         }}
       />
-      <input
-        className="sign-up-page__input"
+      <OshInput
+        errorMessage="رمز باید حداقل 10 کاراکتر و شامل حروف، عدد و سیمبل باشد !!"
+        minLength="10"
+        maxLength="50"
+        pattern={
+          /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/
+        }
+        placeholder="رمز عبور"
+        defaultValue={password}
         type="password"
-        placeholder="پسورد"
-        value={password}
-        onChange={(event) => {
-          setPassword(event.target.value);
+        change={(value) => {
+          setPassword(value);
         }}
       />
-      <input
-        className="sign-up-page__input"
+      <OshInput
+        errorMessage="رمز عبور و تکرار آن باید برابر باشد !!"
+        minLength="10"
+        maxLength="50"
+        pattern={
+          /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/
+        }
+        placeholder="تکرار رمز عبور"
+        defaultValue={confirmPassword}
         type="password"
-        placeholder="تکرار پسورد"
-        value={confirmPassword}
-        onChange={(event) => {
-          setConfirmPassword(event.target.value);
+        change={(value) => {
+          setConfirmPassword(value);
         }}
       />
-      <input
-        className="sign-up-page__input"
-        type="text"
+      <OshInput
+        errorMessage="لطفا با دقت بیشتری شماره موبایل خود را وارد کنید !!"
+        minLength="11"
+        maxLength="11"
+        pattern="*"
         placeholder="شماره تماس"
-        value={mobile}
-        onChange={(event) => {
-          setMobile(event.target.value);
+        defaultValue={mobile}
+        type="number"
+        change={(value) => {
+          setMobile(value);
         }}
       />
-      <OshButton text={"Sign Up"} disabled={false}  click={handleSignUp} />
+      {!showToast && (
+        <OshButton
+          text={"Sign Up"}
+          disabled={false}
+          click={() => {
+            password.length > 7 && password === confirmPassword
+              ? HandleSignUp()
+              : HandleToast();
+          }}
+        />
+ 
+      
+      )}
+      {showToast && (
+        <OshToast
+          text="رمز عبور و تکرار آن یکسان نیست!"
+          type="osh-toast__danger"
+        />
+      )}
       {userSignedUp && <Navigate to="/login" />}
     </div>
   );

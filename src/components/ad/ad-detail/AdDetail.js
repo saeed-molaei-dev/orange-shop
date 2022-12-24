@@ -110,7 +110,11 @@ function AdDetail() {
           onDeleted={HandleDelete}
         />
       ) : (
-        <OshButton text={"افزودن به لیست خرید"}  disabled={false} click={HandleAddToCart} />
+        <OshButton
+          text={"افزودن به لیست خرید"}
+          disabled={false}
+          click={HandleAddToCart}
+        />
       )}
     </div>
   );

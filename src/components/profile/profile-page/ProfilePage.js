@@ -14,7 +14,7 @@ function ProfilePage() {
     if (JSON.parse(localStorage.getItem(cLocalStorageUser)) !== null) {
       sethasToken(true);
       return true;
-    } else {
+    } else { 
       sethasToken(false);
       return false;
     }
