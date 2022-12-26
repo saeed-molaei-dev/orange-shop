@@ -22,7 +22,4 @@
     margin-top: 32px;
     @include mixin.osh-button();
   }
-  &__disable-button {
-    display: none !important ;
-  }
 }
