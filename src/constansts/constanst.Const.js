@@ -1,7 +1,7 @@
 import testImg from "../assets/images/home/Bg.webp";
 import brockenImg from "../assets/images/broken/broken.png";
 export const cBrockenImg = brockenImg;
-// dispatch type
+// dispatch > type
 export const cAdListLoading = "AdListLoading";
 export const cAdListFetched = "AdListFetched";
 export const cAdListFailed = "AdListFailed";
