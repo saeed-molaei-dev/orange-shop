@@ -29,8 +29,13 @@ function UserInitState() {
   }
   return initState;
 }
-function AddressInitState() {
-  let initState = null;
+export function AddressInitState() {
+  let initState = {
+    city: null,
+    address: null,
+    postalCode: null,
+    phone: null,
+  };
   if (localStorage.getItem(cLocalStorageAddress)) {
     initState = JSON.parse(localStorage.getItem(cLocalStorageAddress));
   }
