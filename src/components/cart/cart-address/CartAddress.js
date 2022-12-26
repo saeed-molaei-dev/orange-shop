@@ -40,14 +40,14 @@ function CartAddress() {
   }
   useEffect(() => {
     CheckToken() && handleButton();
-  }, []);
+  }, [city, address, postalCode, phone]);
 
   function handleButton() {
     if (
-      city.trim() === "" &&
-      address.trim() === "" &&
-      postalCode.trim() === "" &&
-      phone.trim() === ""
+      city?.trim().length > 2 &&
+      address?.trim().length > 9 &&
+      postalCode?.trim().length > 9 &&
+      phone?.length > 10
     ) {
       setBtnInable(false);
     } else {
@@ -94,22 +94,15 @@ function CartAddress() {
         errorMessage="شماره تماس وارد شده صحیح نیست!!"
         minLength="11"
         maxLength="11"
-        pattern="09(1[0-9]|3[1-9]|2[1-9])-?[0-9]{3}-?[0-9]{4}"
+        pattern={/^09\d{9}/}
         placeholder="شماره تماس"
         defaultValue={phone}
+        type="number"
         change={(value) => {
           setPhone(value);
         }}
       />
-      <span
-        className={
-          btnInable
-            ? "cart-address__inable-button"
-            : "cart-address__disable-button"
-        }
-      >
-        <OshButton disabled={false} text={"بعدی"} click={handleAddressForm} />
-      </span>
+      <OshButton disabled={btnInable} text={"بعدی"} click={handleAddressForm} />
       {saved && <Navigate to="/checkout"></Navigate>}
     </div>
   );
