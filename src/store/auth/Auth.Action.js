@@ -4,6 +4,7 @@ import {
   cLocalStorageUser,
   cLocalStorageAddress,
 } from "../../constansts/constanst.Const";
+import { AddressInitState } from "./Auth.Reducer";
 
 export function SignUp(props) {
   return async (dispatch, getState) => {
@@ -15,7 +16,7 @@ export function SignUp(props) {
         userList: userList,
         userError: "",
         userSignedUp: false,
-        userProfileInfo: {},
+        userProfileInfo: {}, 
       },
     });
     await axios
@@ -33,7 +34,7 @@ export function SignUp(props) {
             userList: userList,
             userError: "",
             userSignedUp: true,
-            userProfileInfo: {},
+            userProfileInfo: {}, 
           },
         });
       })
@@ -45,7 +46,7 @@ export function SignUp(props) {
             userList: userList,
             userError: error.message,
             userSignedUp: false,
-            userProfileInfo: {},
+            userProfileInfo: {}, 
           },
         });
       })
@@ -62,7 +63,7 @@ export function Login(props) {
         userList: userList,
         userError: "",
         userSignedUp: false,
-        userProfileInfo: {},
+        userProfileInfo: {}, 
       },
     });
     await axios
@@ -80,6 +81,7 @@ export function Login(props) {
             userError: "",
             userSignedUp: false,
             userProfileInfo: {},
+            userAddress:AddressInitState(),
           },
         });
       })
@@ -91,7 +93,7 @@ export function Login(props) {
             userList: userList,
             userError: error.message,
             userSignedUp: false,
-            userProfileInfo: {},
+            userProfileInfo: {}, 
           },
         });
       })
@@ -108,7 +110,7 @@ export function getProfile() {
         userList: userList,
         userError: "",
         userSignedUp: false,
-        userProfileInfo: {},
+        userProfileInfo: {}, 
       },
     });
     await axios
@@ -126,6 +128,7 @@ export function getProfile() {
             userError: "",
             userSignedUp: true,
             userProfileInfo: response.data,
+            userAddress:AddressInitState(),
           },
         });
       })
@@ -137,7 +140,7 @@ export function getProfile() {
             userList: userList,
             userError: error.message,
             userSignedUp: false,
-            userProfileInfo: {},
+            userProfileInfo: {}, 
           },
         });
       })
@@ -171,8 +174,7 @@ export function Logout() {
         userList: null,
         userError: "",
         userSignedUp: false,
-        userProfileInfo: {},
-        userAddress: null,
+        userProfileInfo: {}, 
       },
     });
   };
