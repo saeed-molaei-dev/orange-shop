@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import axios from "axios";
 import {
   cUserUpdateState,
@@ -16,7 +17,7 @@ export function SignUp(props) {
         userList: userList,
         userError: "",
         userSignedUp: false,
-        userProfileInfo: {}, 
+        userProfileInfo: {},
       },
     });
     await axios
@@ -34,7 +35,7 @@ export function SignUp(props) {
             userList: userList,
             userError: "",
             userSignedUp: true,
-            userProfileInfo: {}, 
+            userProfileInfo: {},
           },
         });
       })
@@ -46,7 +47,7 @@ export function SignUp(props) {
             userList: userList,
             userError: error.message,
             userSignedUp: false,
-            userProfileInfo: {}, 
+            userProfileInfo: {},
           },
         });
       })
@@ -63,7 +64,7 @@ export function Login(props) {
         userList: userList,
         userError: "",
         userSignedUp: false,
-        userProfileInfo: {}, 
+        userProfileInfo: {},
       },
     });
     await axios
@@ -81,7 +82,7 @@ export function Login(props) {
             userError: "",
             userSignedUp: false,
             userProfileInfo: {},
-            userAddress:AddressInitState(),
+            userAddress: AddressInitState(),
           },
         });
       })
@@ -93,7 +94,7 @@ export function Login(props) {
             userList: userList,
             userError: error.message,
             userSignedUp: false,
-            userProfileInfo: {}, 
+            userProfileInfo: {},
           },
         });
       })
@@ -102,7 +103,7 @@ export function Login(props) {
 }
 export function getProfile() {
   return async (dispatch, getState) => {
-    const { userList ,userAddress } = getState().authState;
+    const { userList, userAddress } = getState().authState;
     dispatch({
       type: cUserUpdateState,
       payload: {
@@ -110,7 +111,7 @@ export function getProfile() {
         userList: userList,
         userError: "",
         userSignedUp: false,
-        userProfileInfo: {}, 
+        userProfileInfo: {},
       },
     });
     await axios
@@ -128,7 +129,7 @@ export function getProfile() {
             userError: "",
             userSignedUp: true,
             userProfileInfo: response.data,
-            userAddress:AddressInitState(),
+            userAddress: AddressInitState(),
           },
         });
       })
@@ -140,7 +141,7 @@ export function getProfile() {
             userList: userList,
             userError: error.message,
             userSignedUp: false,
-            userProfileInfo: {}, 
+            userProfileInfo: {},
           },
         });
       })
@@ -174,7 +175,7 @@ export function Logout() {
         userList: null,
         userError: "",
         userSignedUp: false,
-        userProfileInfo: {}, 
+        userProfileInfo: {},
       },
     });
   };

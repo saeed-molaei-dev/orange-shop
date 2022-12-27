@@ -15,15 +15,16 @@ import OrdersPage from "../components/order/order-page/OrdersPage";
 import { orderStore } from "../store/order/Order.Store";
 import OrderDetail from "../components/order/order-detail/OrderDetail";
 import SettingPage from "../components/setting/setting-page/SettingPage";
+import OshSkelton from "../components/global/osh-skelton/OshSkelton";
 
-function 
-RoutesConst() {
+function RoutesConst() {
   return (
     <Routes>
       <Route
         path="/"
         element={
           <Provider store={AdListStore}>
+         
             <AdList />
           </Provider>
         }
