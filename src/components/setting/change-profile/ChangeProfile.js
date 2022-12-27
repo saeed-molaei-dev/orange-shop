@@ -15,23 +15,23 @@ function ChangeProfile() {
   const [age, setAge] = useState("");
   const [city, setCity] = useState("");
   async function SubmitForm() {
-
-    await axios.put(
-      "http://kzico.runflare.run/user/change-profile",
-      {
-        firstname,
-        lastname,
-        gender,
-        age,
-        city,
-      },
-      {
-        headers: {
-          authorization: "Bearer " + userList.token,
+    await axios
+      .put(
+        "http://kzico.runflare.run/user/change-profile",
+        {
+          firstname,
+          lastname,
+          gender,
+          age,
+          city,
         },
-      },
-    ).then((response)=>{ 
-    }) ;
+        {
+          headers: {
+            authorization: "Bearer " + userList.token,
+          },
+        },
+      )
+      .then((response) => {});
   }
   return (
     <div className="change-profile">

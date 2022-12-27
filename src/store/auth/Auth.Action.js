@@ -102,7 +102,7 @@ export function Login(props) {
 }
 export function getProfile() {
   return async (dispatch, getState) => {
-    const { userList } = getState().authState;
+    const { userList ,userAddress } = getState().authState;
     dispatch({
       type: cUserUpdateState,
       payload: {

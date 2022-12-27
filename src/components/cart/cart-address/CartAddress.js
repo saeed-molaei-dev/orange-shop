@@ -23,12 +23,12 @@ function CartAddress() {
   );
   const [saved, setSaved] = useState(false);
   const [btnInable, setBtnInable] = useState(false);
+  const [hasToken, sethasToken] = useState(true);
   const mergedDispatch = useDispatch();
   function handleAddressForm() {
     mergedDispatch(StoreAddress({ city, address, postalCode, phone }));
     setSaved(true);
   }
-  const [hasToken, sethasToken] = useState(true);
   function CheckToken() {
     if (JSON.parse(localStorage.getItem(cLocalStorageUser)) !== null) {
       sethasToken(true);
