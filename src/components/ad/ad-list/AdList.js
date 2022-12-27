@@ -16,7 +16,7 @@ function AdList() {
 
   return (
     <div className="osh-ad-list-wrapper">
-      {adLoading||true
+      {adLoading
         ? [...Array(40)].map((item, index) => {
             return (
               <OshSkelton
