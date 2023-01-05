@@ -1,13 +1,18 @@
 @use "../../../assets/global-styles/mixin.scss";
 .header {
-  width: 100%;
+  // background-image: linear-gradient(to top, #ffffff, #ffffff, #dddddd);
+  background-color:white ;
+  width: 720px;
   height: 56px;
+  padding: 0 16px;
+  border-bottom: 1px solid transparent black;
+  border-end-end-radius: 24px;
+  border-end-start-radius: 24px;
+  position: fixed;
+  left: calc(50% - 360px);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  @include mixin.osh-border(1px);
-  padding: 0 16xp;
-  margin: 8px auto 16px;
   &__nav {
     display: flex;
   }

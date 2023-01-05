@@ -1,25 +1,15 @@
- 
+.osh-skelton {
+  animation: osh-skelton 2s infinite;
+}
 
-// .osh-skelton { 
-//   animation: osh-skelton 2s infinite;
-// }
-// .osh-skelton div:nth-child(3) {
-//     animation-delay: -0.15s;
-//   }
-//   @keyframes osh-skelton {
-//     0% {
-//       background-color: gray;
-//     }
-//     25% {
-//       background-color: lightgray;
-//     }
-//     40% {
-//       background-color: gray;
-//     }
-//     60% {
-//       background-color: lightgray;
-//     }
-//     100% {
-//       background-color: gray;
-//     }
-//   } 
+@keyframes osh-skelton {
+  0% {
+    background-color: #808080;
+  }
+  50% {
+    background-color: #8d8d8d;
+  }
+  100% {
+    background-color: #808080;
+  }
+}

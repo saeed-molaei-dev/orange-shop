@@ -2,22 +2,19 @@ import React from "react";
 import "./OshSkelton.scss";
 function OshSkelton({
   tagName = "No name",
-  backgroundColor = "gray",
   width = "0",
   height = "0",
   margin = "0",
   padding = "0",
   border = "0",
-  borderRadius = "0",
+  borderRadius = "4px",
   display = "flex",
   flexWrap = "wrap",
   flexDirection = "row",
   justifyContent = "center",
   alignItems = "center",
-  children = <span></span>,
 }) {
   const oshSkelton = {
-    backgroundColor: backgroundColor,
     width: width,
     height: height,
     margin: margin,
@@ -30,14 +27,7 @@ function OshSkelton({
     justifyContent: justifyContent,
     alignItems: alignItems,
   };
-  return (
-    <div
-      style={oshSkelton}
-      className='osh-skelton'
-    >
-      {children}
-    </div>
-  );
+  return <span style={oshSkelton} className="osh-skelton"></span>;
 }
 
 export default OshSkelton;

@@ -1,12 +1,28 @@
-.osh-ad-list-wrapper {
+@use "../../../assets/global-styles/mixin.scss";
+.osh-ad-list-wrapper { 
   width: 100%;
   display: flex;
   flex-wrap: wrap;
   gap: 16px;
   padding-bottom: 60px;
+  padding-top: 70px;
 }
-.osh-ad-list-loading{&__footer{
-  width: 100%;
+.osh-ad-list-skelton {
+  width: calc(25% - 12px);
+  height: fit-content;
+  padding: 16px 16px 0;
+  @include mixin.osh-border(1px);
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
-}}
+  &__body-holder {
+    width: 100%;
+  }
+}
+.osh-ad-list-loading {
+  &__footer {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+}
