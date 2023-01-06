@@ -1,15 +1,31 @@
-.osh-skelton {
-  animation: osh-skelton 2s infinite;
+.osh-skelton-first-color {
+  animation: osh-skelton-first-color 2s infinite;
 }
 
-@keyframes osh-skelton {
+@keyframes osh-skelton-first-color {
   0% {
     background-color: #808080;
   }
   50% {
-    background-color: #8d8d8d;
+    background-color: #8e8e8e;
   }
   100% {
     background-color: #808080;
+  }
+}
+
+.osh-skelton-second-color {
+  animation: osh-skelton-second-color 2s infinite;
+}
+
+@keyframes osh-skelton-second-color {
+  0% {
+    background-color: #8e8e8e;
+  }
+  50% {
+    background-color: #808080;
+  }
+  100% {
+    background-color: #8e8e8e;
   }
 }

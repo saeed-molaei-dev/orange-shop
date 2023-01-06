@@ -37,12 +37,13 @@
 
 body {
   font-family: "Peyda", sans-serif;
-  background-color: white; 
+  background-color: white;
   /* background-color: #5a5a5a; */
   margin: 0 auto;
   padding: 0;
   width: 100%;
-  max-width: 720px;
+  max-width: 1440px;
+  position: relative;
   user-select: none;
 }
 

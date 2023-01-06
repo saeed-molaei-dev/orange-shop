@@ -13,6 +13,8 @@ function OshSkelton({
   flexDirection = "row",
   justifyContent = "center",
   alignItems = "center",
+  colorNumber = "1",
+  // backgroundColor = "red",
 }) {
   const oshSkelton = {
     width: width,
@@ -26,8 +28,19 @@ function OshSkelton({
     flexDirection: flexDirection,
     justifyContent: justifyContent,
     alignItems: alignItems,
+    // backgroundColor: backgroundColor,
   };
-  return <span style={oshSkelton} className="osh-skelton"></span>;
+
+  return (
+    <span
+      style={oshSkelton}
+      className={
+        colorNumber === "1"
+          ? "osh-skelton-first-color"
+          : "osh-skelton-second-color"
+      }
+    ></span>
+  );
 }
 
 export default OshSkelton;

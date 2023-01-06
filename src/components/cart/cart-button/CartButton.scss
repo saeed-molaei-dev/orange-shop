@@ -1,9 +1,11 @@
 @use "../../../assets/global-styles/mixin.scss";
 .cart-button {
-  margin-inline-end: 48px; //////////////
+  margin-inline-end: 48px; /////////////
   padding: 0 0.8px;
   position: relative;
+  color: black;
   &__count {
+    color: black;
     width: 18px;
     height: 18px;
     position: absolute;
@@ -16,7 +18,7 @@
     align-items: center;
     padding: 10px;
     padding-top: 12px;
-    @include mixin.osh-border(1px);
+    border: 1px solid black;
     border-radius: 50%;
   }
 }
