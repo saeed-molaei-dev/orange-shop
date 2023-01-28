@@ -1,31 +1,25 @@
-.osh-skelton-first-color {
-  animation: osh-skelton-first-color 2s infinite;
-}
+ 
 
-@keyframes osh-skelton-first-color {
-  0% {
-    background-color: #808080;
-  }
-  50% {
-    background-color: #8e8e8e;
-  }
-  100% {
-    background-color: #808080;
-  }
-}
-
-.osh-skelton-second-color {
-  animation: osh-skelton-second-color 2s infinite;
-}
-
-@keyframes osh-skelton-second-color {
-  0% {
-    background-color: #8e8e8e;
-  }
-  50% {
-    background-color: #808080;
-  }
-  100% {
-    background-color: #8e8e8e;
-  }
-}
+// .osh-skelton { 
+//   animation: osh-skelton 2s infinite;
+// }
+// .osh-skelton div:nth-child(3) {
+//     animation-delay: -0.15s;
+//   }
+//   @keyframes osh-skelton {
+//     0% {
+//       background-color: gray;
+//     }
+//     25% {
+//       background-color: lightgray;
+//     }
+//     40% {
+//       background-color: gray;
+//     }
+//     60% {
+//       background-color: lightgray;
+//     }
+//     100% {
+//       background-color: gray;
+//     }
+//   } 

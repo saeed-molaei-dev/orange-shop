@@ -1,11 +1,6 @@
 import testImg from "../assets/images/home/Bg.webp";
 import brockenImg from "../assets/images/broken/broken.png";
-import orangeLogo from "../assets/images/logo/orangeLogo.png";
-import cv from "../assets/files/cv/saeed-molaei-cv.pdf";
-// image
-export const cOrangeLogo = orangeLogo;
 export const cBrockenImg = brockenImg;
-export const cCv = cv;
 // dispatch > type
 export const cAdListLoading = "AdListLoading";
 export const cAdListFetched = "AdListFetched";

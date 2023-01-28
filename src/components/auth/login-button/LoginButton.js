@@ -16,9 +16,9 @@ function LoginButton() {
   return (
     <div className="login-button">
       {userList ? (
-        <div  className="login-button__username">{userList.username}</div>
+        <div>{userList.username}</div>
       ) : (
-        <Link  className="login-button__username" to="/login">ورود</Link>
+        <Link to="/login">ورود</Link>
       )}
       {userList ? (
         <div className="login-button__nav-wrapper">
